@@ -1,7 +1,50 @@
 <div class="container">
-    <div *ngIf="loading" class="loading">Laadimine...</div>
-
-    <div class="session-cards-container" *ngIf="!loading">
-      <app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
-    </div>
+  <div class="search-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Otsing nime järgi</mat-label>
+      <input matInput [(ngModel)]="searchTerm" (input)="filterSessions()" />
+    </mat-form-field>
+  </div>
+  <div class="filter-toggle">
+    <button (click)="toggleFilters()">Filtrid</button>
+  </div>
+  <div class="filter-menu" [class.show]="showFilters">
+    <mat-form-field appearance="fill">
+      <mat-label>Žanr</mat-label>
+      <mat-select [(value)]="selectedGenres" (selectionChange)="filterSessions()" multiple>
+        <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Vanusepiirang</mat-label>
+      <mat-select [(value)]="selectedAgeRestrictions" (selectionChange)="filterSessions()" multiple>
+        <mat-option *ngFor="let restriction of ageRestrictions" [value]="restriction">{{restriction}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Keel</mat-label>
+      <mat-select [(value)]="selectedLanguages" (selectionChange)="filterSessions()" multiple>
+        <mat-option *ngFor="let language of languages" [value]="language">{{language}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Subtiitrid</mat-label>
+      <mat-select [(value)]="selectedSubtitles" (selectionChange)="filterSessions()" multiple>
+        <mat-option *ngFor="let subtitle of subtitles" [value]="subtitle">{{subtitle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Algus alates</mat-label>
+      <mat-select [(value)]="selectedStartTime" (selectionChange)="filterSessions()">
+        <mat-option *ngFor="let time of startTimeOptions" [value]="time">{{time}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="filter-menu" [class.show]="showFilters">
+    <button (click)="resetFilters()" class="reset-button">Lähtesta filtrid</button>
+  </div>
+  <div *ngIf="loading" class="loading">Laadimine...</div>
+  <div class="session-cards-container" *ngIf="!loading">
+    <app-session-card *ngFor="let session of filteredSessions" [session]="session"></app-session-card>
+  </div>
 </div>

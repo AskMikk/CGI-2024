@@ -1,3 +1,71 @@
+.container {
+  .filter-toggle {
+    text-align: center;
+    margin: 20px 0;
+    button {
+      width: 100%;
+      max-width: 1200px;
+      padding: 15px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  
+  .reset-button {
+    width: 100%;
+    max-width: 700px;
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #d9534f;
+    border: 1px solid #d43f3a;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+      background-color: #c9302c;
+      border-color: #ac2925;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .filter-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    max-height: 0;
+    &.show {
+      max-height: 500px;
+    }
+    mat-form-field {
+      width: 100%;
+      max-width: 250px;
+      margin: 10px;
+    }
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    mat-form-field {
+      width: 100%;
+      max-width: 1200px;
+    }
+  }
+
+
+
   .loading {
     text-align: center;
     margin-top: 50px;
@@ -14,20 +82,27 @@
   }
 
   app-session-card {
-    box-shadow: 0 4px 6px black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease;
-    background-color: #F5F5F5;;
-
+    background-color: #F5F5F5;
     &:hover {
       transform: translateY(-5px);
     }
   }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
+  .container {
+    .search-container, .filter-toggle {
+      flex-direction: column;
+      align-items: center;
+    }
+
     .session-cards-container {
       grid-template-columns: 1fr;
       padding: 10px;
     }
   }
+}
