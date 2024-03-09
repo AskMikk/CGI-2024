@@ -9,4 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface SessionRepository extends JpaRepository<Session, Long> {
+    @Query("SELECT s FROM Session s WHERE s.startTime > :now")
+    List<Session> findUpcomingSessions(@Param("now") Date now);
 }
