@@ -35,6 +35,7 @@ public class SessionService {
         dto.setGenres(session.getFilm().getGenres().stream()
                 .map(Genre::getName)
                 .collect(Collectors.toList()));
+        dto.setAgeRestriction(session.getFilm().getAgeRestriction() != null ? session.getFilm().getAgeRestriction().getDescription() : "Not specified");
         dto.setTheaterName(session.getTheater().getName());
         dto.setLanguage(session.getLanguage() != null ? session.getLanguage().getName() : "Not specified");
         dto.setSubtitles(session.getSubtitles().stream()
