@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngIf="loading" class="loading">Laadimine...</div>
+
+    <div class="session-cards-container" *ngIf="!loading">
+      <app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
+    </div>
+</div>

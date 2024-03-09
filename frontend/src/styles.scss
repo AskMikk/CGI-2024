@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+html { background-color: #1F1F1F; }
+
+body {
+    font-family: 'Madimi One', sans-serif;
+}

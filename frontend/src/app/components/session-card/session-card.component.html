@@ -1,0 +1,18 @@
+<div class="session">
+  <div class="left">
+    <img *ngIf="session.posterUrl" [src]="session.posterUrl" alt="{{ session.filmTitle }}">
+  </div>
+  <div class="right">
+    <div class="film-title">{{ session.filmTitle }}</div>
+    <div class="session-info">
+      <div class="session-time">{{ session.startTime | date: 'dd.MM.yyyy HH:mm' }}</div>
+      <div class="session-theater">{{ 'Saal' }}:{{ session.theaterName }}</div>
+      <div class="session-genres">{{ 'Žanrid' }}:{{ session.genres.join(', ') }}</div>
+      <div class="session-age-restriction">{{ 'Vanusepiirang' }}: {{ session.ageRestriction }}</div>
+      <div class="session-available">{{ 'Saadaval' }}: {{ session.availableSeats }}</div>
+      <div class="session-language">{{ 'Keel' }}: {{ session.language }}</div>
+      <div class="session-subtitles">{{ 'Subtiitrid' }}: {{ session.subtitles.join(', ') }}</div>
+    </div>
+    <button class="book-button">{{ 'Broneeri' }}</button>
+  </div>
+</div>

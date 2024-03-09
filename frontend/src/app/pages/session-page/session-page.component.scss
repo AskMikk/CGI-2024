@@ -1,0 +1,33 @@
+  .loading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #F5F5F5;
+  }
+
+  .session-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(768px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  app-session-card {
+    box-shadow: 0 4px 6px black;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #F5F5F5;;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .session-cards-container {
+      grid-template-columns: 1fr;
+      padding: 10px;
+    }
+  }
