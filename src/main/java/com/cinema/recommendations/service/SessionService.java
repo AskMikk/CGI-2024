@@ -49,4 +49,13 @@ public class SessionService {
         dto.setPosterUrl(session.getFilm().getPosterUrl());
         return dto;
     }
+
+    public SessionDTO getSessionById(Long sessionId) {
+        Optional<Session> sessionOptional = sessionRepository.findById(sessionId);
+        if (sessionOptional.isPresent()) {
+            return convertToDTO(sessionOptional.get());
+        } else {
+            throw new RuntimeException("Session not found for id: " + sessionId);
+        }
+    }
 }

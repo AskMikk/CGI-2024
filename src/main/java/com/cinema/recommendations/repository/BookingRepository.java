@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface BookingRepository  extends JpaRepository<Booking, Long> {
     int countBySession(Session session);
+
+    List<Booking> findBySessionId(Long sessionId);
 }
 
