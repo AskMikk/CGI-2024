@@ -16,12 +16,44 @@
 
 }
 
+.ticket-quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.ticket-quantity button {
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.ticket-quantity input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.ticket-quantity button:disabled {
+  background-color: #CCCCCC;
+  cursor: not-allowed;
+}
+
 .right {
   flex: 2;
   display: flex;
   flex-direction: column;
   padding: 24px;
-  justify-content: center;
+  justify-content: center; 
   text-align: center;
 }
 
@@ -36,11 +68,11 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start; 
 }
 
 .book-button {
-  width: calc(100% - 20px);
+  width: calc(100% - 20px); 
   margin-top: 10px;
   padding: 15px 20px;
   background-color: orange;

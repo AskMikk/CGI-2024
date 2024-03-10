@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SessionCardComponent } from './components/session-card/session-card.component';
@@ -12,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SessionSeatingPageComponent } from './pages/session-seating-page/session-seating-page.component';
 
 
 
@@ -21,7 +23,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
   declarations: [
     AppComponent,
     SessionCardComponent,
-    SessionPageComponent
+    SessionPageComponent,
+    SessionSeatingPageComponent
   ],
   imports: [
     BrowserModule,

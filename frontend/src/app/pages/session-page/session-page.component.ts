@@ -27,8 +27,6 @@ export class SessionPageComponent implements OnInit {
   ];
   showFilters = false;
 
-
-
   constructor(private sessionService: SessionService) {}
 
   ngOnInit(): void {
@@ -68,4 +66,4 @@ export class SessionPageComponent implements OnInit {
     this.selectedStartTime = '';
     this.filterSessions();
   }
-} 
+}

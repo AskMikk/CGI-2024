@@ -1,0 +1,13 @@
+<div *ngIf="session" class="container">
+  <h2>{{ session.filmTitle }} - Istekohtade Valik</h2>
+  <div class="seats-container">
+    <div class="theater" role="grid">
+      <div *ngFor="let row of seatMatrix; let rowIndex = index" class="row" role="row">
+        <div *ngFor="let seat of row; let seatIndex = index" class="seat" [class.occupied]="isSeatOccupied(rowIndex, seatIndex)" [class.recommended]="isSeatRecommended(rowIndex, seatIndex)" role="gridcell" tabindex="0" [attr.aria-label]="'Seat ' + (rowIndex + 1) + '-' + (seatIndex + 1)">
+          {{ rowIndex + 1 }}-{{ seatIndex + 1 }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="booking-button" (click)="bookRecommendedSeats()">Broneeri</button>
+</div>

@@ -13,6 +13,11 @@
       <div class="session-language">{{ 'Keel' }}: {{ session.language }}</div>
       <div class="session-subtitles">{{ 'Subtiitrid' }}: {{ session.subtitles.join(', ') }}</div>
     </div>
-    <button class="book-button">{{ 'Broneeri' }}</button>
+    <div class="ticket-quantity">
+      <button (click)="decreaseTickets()" [disabled]="ticketCount <= 1">-</button>
+      <input type="text" [(ngModel)]="ticketCount" disabled />
+      <button (click)="increaseTickets()" [disabled]="ticketCount >= session.availableSeats!">+</button>
+    </div>
+    <button class="book-button" (click)="bookSession()">{{ 'Broneeri' }}</button>
   </div>
 </div>

@@ -9,4 +9,6 @@ export interface Session {
   language: string;
   subtitles: string[];
   posterUrl: string;
+  numberOfRows: number;
+  seatsPerRow: number;
 }
