@@ -1,21 +1,25 @@
 package com.cinema.recommendations.init;
 
 import com.cinema.recommendations.entity.*;
+import com.cinema.recommendations.model.SeatDTO;
 import com.cinema.recommendations.repository.*;
+import com.cinema.recommendations.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import jakarta.transaction.Transactional;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class SessionInitializer implements ApplicationRunner {
+public class SessionAndBookingInitializer implements ApplicationRunner {
 
     private final SessionRepository sessionRepository;
 
@@ -25,10 +29,17 @@ public class SessionInitializer implements ApplicationRunner {
 
     private final LanguageRepository languageRepository;
 
+    private final UserRepository userRepository;
+
+    private final BookingService bookingService;
+
+    private final BookingRepository bookingRepository;
+
     @Override
     @Transactional
     public void run(ApplicationArguments args) {
         initializeSessions();
+        initializeBookings();
     }
 
     private void initializeSessions() {
@@ -63,6 +74,49 @@ public class SessionInitializer implements ApplicationRunner {
 
                         int increment = 120 + 30 * random.nextInt(3);
                         timeSlot = timeSlot.plusMinutes(increment);
+                    }
+                }
+            }
+        }
+    }
+
+    private void initializeBookings() {
+        if (bookingRepository.count() == 0) {
+            List<Session> sessions = sessionRepository.findAll();
+            User user = userRepository.findById(1L).orElse(null);
+            if (user == null) return;
+
+            Random random = new Random();
+
+            for (Session session : sessions) {
+                int numberOfBookings = 1 + random.nextInt(10);
+
+                for (int i = 0; i < numberOfBookings; i++) {
+                    int numberOfTickets = 1 + random.nextInt(5);
+
+                    List<SeatDTO> recommendedSeats = bookingService.recommendSeats(session, numberOfTickets);
+                    if (!recommendedSeats.isEmpty()) {
+                        int row = recommendedSeats.getFirst().getRow();
+                        List<Integer> seatsToBook = recommendedSeats.stream().map(SeatDTO::getSeat).collect(Collectors.toList());
+                        bookingService.bookSeats(session, row, seatsToBook, user);
+                    }
+                }
+            }
+            User user2 = userRepository.findById(2L).orElse(null);
+            List<Session> pastSessions = sessionRepository.findAll().stream()
+                    .filter(session -> session.getStartTime().before(new Date()))
+                    .collect(Collectors.toList());
+            if (user2 != null && !pastSessions.isEmpty()) {
+
+                Collections.shuffle(pastSessions);
+                for (int i = 0; i < 3; i++) {
+                    Session session = pastSessions.get(i);
+                    int numberOfTickets = 1 + random.nextInt(5);
+                    List<SeatDTO> recommendedSeats = bookingService.recommendSeats(session, numberOfTickets);
+                    if (!recommendedSeats.isEmpty()) {
+                        int row = recommendedSeats.getFirst().getRow();
+                        List<Integer> seatsToBook = recommendedSeats.stream().map(SeatDTO::getSeat).collect(Collectors.toList());
+                        bookingService.bookSeats(session, row, seatsToBook, user2);
                     }
                 }
             }
