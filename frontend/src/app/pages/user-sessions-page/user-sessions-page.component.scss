@@ -1,0 +1,68 @@
+.container {
+    .filter-toggle {
+      text-align: center;
+      margin: 20px 0;
+      button {
+        width: 100%;
+        max-width: 1200px;
+        padding: 15px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+    
+  
+    .loading {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 18px;
+      color: #F5F5F5;
+    }
+  
+    .session-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(768px, 1fr));
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+  
+    app-session-card {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      background-color: #F5F5F5;
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+  
+  .toggle-button{
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      .search-container {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .session-cards-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+    }
+  }
+ 

@@ -1,0 +1,9 @@
+<div class="container"> 
+    <div class="filter-toggle">
+      <button class="toggle-button" (click)="redirectToMain()">Tagasi</button>
+    </div>
+    <div *ngIf="loading" class="loading">Laadimine...</div>
+    <div class="session-cards-container" *ngIf="!loading">
+      <app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
+    </div>
+  </div>

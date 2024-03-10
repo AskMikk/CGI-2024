@@ -6,7 +6,11 @@
     </mat-form-field>
   </div>
   <div class="filter-toggle">
-    <button (click)="toggleFilters()">Filtrid</button>
+    <div class="buttons-container">
+      <button (click)="redirectToHistory()">Kinokülastuste ajalugu</button>
+      <button (click)="redirectToRecommendation()">Soovita filme vaatamisajaloo põhjal</button>
+    </div>
+    <button class="toggle-button" (click)="toggleFilters()">Filtrid</button>
   </div>
   <div class="filter-menu" [class.show]="showFilters">
     <mat-form-field appearance="fill">

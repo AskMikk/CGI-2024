@@ -64,8 +64,6 @@
     }
   }
 
-
-
   .loading {
     text-align: center;
     margin-top: 50px;
@@ -93,6 +91,9 @@
   }
 }
 
+.toggle-button{
+  margin-top: 10px;
+}
 @media (max-width: 768px) {
   .container {
     .search-container, .filter-toggle {
@@ -104,5 +105,31 @@
       grid-template-columns: 1fr;
       padding: 10px;
     }
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  padding: 0 10px; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+.buttons-container button {
+  padding: 15px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  flex: 1; 
+
+  &:hover {
+    background-color: #0056b3;
   }
 }

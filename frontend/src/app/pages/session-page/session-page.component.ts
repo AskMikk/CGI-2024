@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../../models/session';
 import { SessionService } from '../../services/sesssion.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-session-page',
@@ -27,10 +29,22 @@ export class SessionPageComponent implements OnInit {
   ];
   showFilters = false;
 
-  constructor(private sessionService: SessionService) {}
+
+
+  constructor(
+    private sessionService: SessionService,
+    private router: Router 
+    ) {}
 
   ngOnInit(): void {
     this.fetchSessions();
+    this.login();
+  }
+
+  //TODO: Stub. Täisversioon nõuab registreerimis- ja sisselogimissüsteemi loomist, räsimine, angular guard jne.
+  login(): void {
+    const userId = 2;
+    localStorage.setItem('userId', userId.toString());
   }
 
   fetchSessions(): void {
@@ -66,4 +80,12 @@ export class SessionPageComponent implements OnInit {
     this.selectedStartTime = '';
     this.filterSessions();
   }
-}
+
+  redirectToHistory(): void {
+    this.router.navigate(['/history']); 
+  }
+
+  redirectToRecommendation(): void {
+    this.router.navigate(['/recommendation']); 
+  }
+} 
