@@ -15,6 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// Aja säästmiseks pärast esimese kirjutamist tehti ülejäänud tehisintilekti abil koopiana.
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
 

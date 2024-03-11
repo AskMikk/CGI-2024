@@ -12,6 +12,7 @@ public class RecommendationsApplication {
 		SpringApplication.run(RecommendationsApplication.class, args);
 	}
 
+	// Ma ei ole kindel, kas seda ei peaks üle viima kausta util ja tegema factory või jätma alles.
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();

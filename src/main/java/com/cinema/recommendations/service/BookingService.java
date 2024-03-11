@@ -57,6 +57,7 @@ public class BookingService {
         return suitableBlocks;
     }
 
+    // Tuleb täpsemalt seadistada kaalusid, et jaotus oleks reaalsem.
     private void sortSuitableBlocks(List<List<SeatDTO>> suitableBlocks, int numberOfRows, int seatsPerRow) {
         suitableBlocks.sort(Comparator.comparingDouble(block -> {
             SeatDTO firstSeat = block.getFirst();
@@ -88,6 +89,8 @@ public class BookingService {
         }
     }
 
+    // Ma ei ole kindel selle koodiosa rakendamises, võib-olla oleks mõistlik kõik rühmitada, näiteks nii,
+    // et oleks lihtsalt kontakt ükskõik millise grupi liikmega, mitte nagu praegu.
     private List<SeatDTO> groupSeatsCloseToCenter(List<SeatDTO> availableSeats, int numberOfRows, int seatsPerRow, int numberOfTickets) {
         int middleRow = numberOfRows / 2;
         int middleSeat = seatsPerRow / 2;

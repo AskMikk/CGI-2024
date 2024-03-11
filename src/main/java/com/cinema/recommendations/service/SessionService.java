@@ -29,15 +29,16 @@ public class SessionService {
                 .collect(Collectors.toList());
     }
 
+    // Proovisin mitut meetodit, kuid ei suutnud täielikult välja mõelda, kuidas kasutada mapperit seotud tabelitest andmete hankimiseks.
     public SessionDTO convertToDTO(Session session) {
         SessionDTO dto = modelMapper.map(session, SessionDTO.class);
         dto.setFilmTitle(session.getFilm().getTitle());
         dto.setGenres(session.getFilm().getGenres().stream()
                 .map(Genre::getName)
                 .collect(Collectors.toList()));
-        dto.setAgeRestriction(session.getFilm().getAgeRestriction() != null ? session.getFilm().getAgeRestriction().getDescription() : "Not specified");
+        dto.setAgeRestriction(session.getFilm().getAgeRestriction() != null ? session.getFilm().getAgeRestriction().getDescription() : "Spetsifitseerimata");
         dto.setTheaterName(session.getTheater().getName());
-        dto.setLanguage(session.getLanguage() != null ? session.getLanguage().getName() : "Not specified");
+        dto.setLanguage(session.getLanguage() != null ? session.getLanguage().getName() : "Spetsifitseerimata");
         dto.setSubtitles(session.getSubtitles().stream()
                 .map(Language::getName)
                 .collect(Collectors.toList()));

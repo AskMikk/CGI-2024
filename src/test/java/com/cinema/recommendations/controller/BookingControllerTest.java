@@ -19,6 +19,8 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+// Aja säästmiseks pärast esimese kirjutamist tehti ülejäänud AI abil koopiana.
 @WebMvcTest(BookingController.class)
 public class BookingControllerTest {
 

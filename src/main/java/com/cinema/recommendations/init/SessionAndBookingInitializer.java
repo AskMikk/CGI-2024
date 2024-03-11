@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// Algselt ei tahtnud ma kahte lähtestamisfunktsiooni ühte faili ühendada. Kuid initsialiseerimisetapis ilmnes tõrkeid isegi @Order kasutamisel
 @Component
 @RequiredArgsConstructor
 public class SessionAndBookingInitializer implements ApplicationRunner {
@@ -51,6 +52,7 @@ public class SessionAndBookingInitializer implements ApplicationRunner {
             LocalDate startDate = LocalDate.now();
             Random random = new Random();
 
+            // Aja säästmiseks kirjutatud tehisintellektiga, siin pole keerulist loogikat
             for (int day = 0; day < 7; day++) {
                 for (Theater theater : theaters) {
                     LocalTime timeSlot = LocalTime.of(8, 0);
@@ -102,6 +104,8 @@ public class SessionAndBookingInitializer implements ApplicationRunner {
                     }
                 }
             }
+
+            // Kood oli vajalik filmisoovitusalgoritmi testimiseks
             User user2 = userRepository.findById(2L).orElse(null);
             List<Session> pastSessions = sessionRepository.findAll().stream()
                     .filter(session -> session.getStartTime().before(new Date()))

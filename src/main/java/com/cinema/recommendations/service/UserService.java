@@ -7,7 +7,6 @@ import com.cinema.recommendations.model.SessionDTO;
 import com.cinema.recommendations.repository.BookingRepository;
 import com.cinema.recommendations.repository.SessionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -35,6 +34,7 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    // Võib-olla oleks mõistlik lisada täiendavaid hindamisparameetreid.
     public List<SessionDTO> recommendSessionsBasedOnHistory(Long userId) {
         List<Booking> userBookings = bookingRepository.findByUserId(userId);
         Map<String, Long> genreFrequency = userBookings.stream()
