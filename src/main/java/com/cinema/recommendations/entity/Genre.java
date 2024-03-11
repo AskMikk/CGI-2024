@@ -22,4 +22,8 @@ public class Genre {
     @NotBlank
     @Size(max = 255)
     private String name;
+
+    public Genre(String name) {
+        this.name = name;
+    }
 }
