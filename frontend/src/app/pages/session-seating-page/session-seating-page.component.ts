@@ -18,6 +18,7 @@ export class SessionSeatingPageComponent implements OnInit {
   recommendedSeats: Seat[] = [];
   seatMatrix: boolean[][] = [];
   selectedSeats: Seat[] = [];
+  ticketCount: number = 1;
 
   constructor(
     private sessionService: SessionService,
@@ -102,4 +103,35 @@ export class SessionSeatingPageComponent implements OnInit {
   isSeatRecommended(row: number, seat: number): boolean {
     return this.recommendedSeats.some(s => s.row === row + 1 && s.seat === seat + 1);
   }
+
+  increaseTickets(): void {
+    const maxAvailableSeats = this.session.availableSeats ?? 0;
+    if (this.ticketCount < maxAvailableSeats) {
+      this.ticketCount++;
+      this.bookingService.recommendSeats(this.session.sessionId, this.ticketCount).subscribe({
+        next: (recommendedSeats) => {
+          this.recommendedSeats = recommendedSeats;
+          this.saveRecommendedSeats();
+          this.restoreRecommendedSeats();
+          this.fetchOccupiedSeats(this.session.sessionId);
+        },
+        error: (error) => console.error('Failed to get seat recommendations', error)
+      });
+    }
+  }
+  
+  decreaseTickets(): void {
+    if (this.ticketCount > 1) {
+      this.ticketCount--;
+      this.bookingService.recommendSeats(this.session.sessionId, this.ticketCount).subscribe({
+        next: (recommendedSeats) => {
+          this.recommendedSeats = recommendedSeats;
+          this.saveRecommendedSeats();
+          this.restoreRecommendedSeats();
+          this.fetchOccupiedSeats(this.session.sessionId);
+        },
+        error: (error) => console.error('Failed to get seat recommendations', error)
+      });
+    }
+  }  
 }
