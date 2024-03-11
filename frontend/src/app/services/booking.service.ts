@@ -18,7 +18,6 @@ import { Observable, catchError, tap, throwError } from "rxjs";
           .set('sessionId', sessionId.toString())
           .set('numberOfTickets', numberOfTickets.toString());
         return this.http.get<Seat[]>(`${this.apiUrl}/recommend-seats`, { params }).pipe(
-          tap(seats => console.log(`Recommended seats for session ${sessionId}:`, seats)),
           catchError(error => {
             console.error('Error fetching recommended seats:', error);
             return throwError(error);

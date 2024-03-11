@@ -1,8 +1,11 @@
+@import "../../../_variables";
+
+// SCSS muutujate arvestamiseks ümberkujundamisel kasutasin tehisintellekti töö kiirendamiseks.
 .session {
-  background-color: #F5F5F5;
+  background-color: $light-color;
   display: flex;
-  box-shadow: 0 2px 5px black;
-  border-radius: 8px;
+  box-shadow: $box-shadow-default;
+  border-radius: $border-radius-medium;
 }
 
 .left {
@@ -13,38 +16,37 @@
 .left img {
   width: 100%;
   height: 100%;
-
 }
 
 .ticket-quantity {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: $gap-small;
 }
 
 .ticket-quantity button {
-  background-color: #007BFF;
-  border: none;
-  color: white;
+  background-color: $primary-color;
+  border: $border-default;
+  color: $text-color-light;
   padding: 5px 10px;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: $font-size-default;
+  border-radius: $border-radius-small;
 }
 
 .ticket-quantity input {
   width: 50px;
   text-align: center;
-  font-size: 16px;
-  margin: 0 10px;
+  font-size: $font-size-default;
+  margin: 0 $gap-small;
   padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: $border-radius-small;
 }
 
 .ticket-quantity button:disabled {
-  background-color: #CCCCCC;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
@@ -52,14 +54,14 @@
   flex: 2;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: $padding-default;
   justify-content: center; 
   text-align: center;
 }
 
 .film-title {
   margin-top: 0;
-  font-size: 24px;
+  font-size: $font-size-large;
   font-weight: bold;
   text-decoration: underline;
 }
@@ -73,17 +75,22 @@
 
 .book-button {
   width: calc(100% - 20px); 
-  margin-top: 10px;
-  padding: 15px 20px;
-  background-color: orange;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
+  margin-top: $gap-small;
+  padding: $padding-default;
+  align-self: center;
+  background-color: $secondary-color;
+  border: $border-default;
+  border-radius: $border-radius-medium;
+  color: $text-color-light;
+  font-size: $font-size-default;
   cursor: pointer;
+  transition: $transition-bg;
+  &:hover {
+    background-color: $secondary-color-hover;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-mobile) {
   .seans {
     flex-direction: column;
     align-items: center;
@@ -92,18 +99,12 @@
   .left img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: $border-radius-medium;
   }
 
   .right {
     width: 100%;
     padding: 16px;
     text-align: center;
-  }
-
-  .book-button {
-    width: calc(100% - 32px);
-    margin-top: 10px;
-    align-self: center;
   }
 }

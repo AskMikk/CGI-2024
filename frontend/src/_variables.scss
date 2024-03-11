@@ -1,0 +1,38 @@
+$primary-color: #007bff;
+$primary-color-hover: #0056b3;
+$secondary-color: orange;
+$secondary-color-hover: #cc7000;
+$danger-color: #d9534f;
+$danger-color-hover: #c9302c;
+$danger-border-color: #d43f3a;
+$danger-border-color-hover: #ac2925;
+$light-color: #F5F5F5;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+$text-color-light: #fff;
+$font-size-default: 16px;
+$font-size-small: 14px;
+$font-size-large: 18px;
+
+$padding-default: 15px 20px;
+$margin-default: 20px 0;
+$gap-small: 10px;
+$gap-default: 20px;
+
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+
+$border-default: none;
+$border-danger: 1px solid $danger-border-color;
+$box-shadow-default: 0 2px 4px $shadow-color;
+$box-shadow-hover: 0 4px 6px $shadow-color;
+
+$transition-bg: background-color 0.3s ease;
+$transition-border-shadow: border-color 0.3s ease, box-shadow 0.3s ease;
+
+$breakpoint-mobile: 768px;
+
+$max-width-container: 1200px;
+$max-width-button: 1200px;
+$max-width-reset-button: 700px;
+$max-width-form-field: 250px;

@@ -1,13 +1,16 @@
+@import "../../../_variables";
+
+// SCSS muutujate arvestamiseks ümberkujundamisel kasutasin tehisintellekti töö kiirendamiseks.
 .seats-container {
   background-color: grey;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0; 
+  box-shadow: $box-shadow-default;
+  border-radius: $border-radius-medium;
+  padding: $gap-default;
+  margin: $margin-default;
 }
 
 .container {
@@ -17,7 +20,7 @@
   justify-content: center; 
   min-height: 90vh; 
   width: 100%;
-  padding: 20px;
+  padding: $gap-default;
   box-sizing: border-box; 
 }
 
@@ -34,19 +37,19 @@
 .seat {
   min-width: 40px;
   height: 40px; 
-  margin: 10px;
+  margin: $gap-small;
   background-color: #1F1F1F;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 14px; 
-  border-radius: 4px;
-  color: white;
+  font-size: $font-size-small; 
+  border-radius: $border-radius-small;
+  color: $text-color-light;
 }
 
 .seat.occupied {
-  background-color: #d9534f;
+  background-color: $danger-color;
 }
 
 .seat.recommended {
@@ -55,26 +58,27 @@
 
 .booking-button {
     width: 100%;
-    max-width: 400px;
-    padding: 15px 20px;
-    margin-top: 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
+    max-width: $max-width-button;
+    padding: $padding-default;
+    margin-top: $gap-default;
+    font-size: $font-size-default;
+    color: $text-color-light;
+    background-color: $primary-color;
+    border: $border-default;
+    border-radius: $border-radius-small;
     cursor: pointer;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: $transition-bg;
     &:hover {
-      background-color: #0056b3;
+      background-color: $primary-color-hover;
     }
-  }
-  .container h2 {
-    color: white;
-  }
+}
 
-@media (max-width: 768px) {
+.container h2 {
+    color: $text-color-light;
+}
+
+@media (max-width: $breakpoint-mobile) {
   .seat {
     min-width: 30px; 
     height: 30px;
@@ -91,27 +95,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: $gap-small;
 }
 
 .ticket-quantity button {
-  background-color: #007BFF;
-  border: none;
-  color: white;
+  background-color: $primary-color;
+  border: $border-default;
+  color: $text-color-light;
   padding: 5px 10px;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: $font-size-default;
+  border-radius: $border-radius-small;
+}
+
+.booking-counter{
+  background-color:$light-color ;
 }
 
 .ticket-quantity input {
   width: 50px;
   text-align: center;
-  font-size: 16px;
-  margin: 0 10px;
+  font-size: $font-size-default;
+  margin: 0 $gap-small;
   padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: $border-radius-small;
 }
 
 .ticket-quantity button:disabled {

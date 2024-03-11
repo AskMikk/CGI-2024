@@ -66,7 +66,6 @@ export class SessionSeatingPageComponent implements OnInit {
 
       this.bookingService.bookSeats(bookingRequest).subscribe({
         next: (response) => {
-          console.log('Booking successful', response);
           localStorage.removeItem(`recommendedSeats-${this.session.sessionId}`);
         },
         error: (error) => console.error('Booking failed', error,bookingRequest)

@@ -29,4 +29,5 @@ Teine keeruline ülesanne oli parima koha otsingu algoritmi kirjutamine saalis. 
 - [x] Kohtade soovitamine seansil, arvestades piletitite arvu
 - [x] Kasutaja seansside ajaloo kuvamine
 - [x] Filmide soovitamine kasutajale, lähtudes varasemalt vaadatud filmidest
+- [x] Backendi üksustestid
 - [x] Docker Compose loomine rakenduse mugavaks käivitamiseks

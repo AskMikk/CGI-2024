@@ -1,42 +1,46 @@
+@import "../../../_variables";
+
+// SCSS muutujate arvestamiseks ümberkujundamisel kasutasin tehisintellekti töö kiirendamiseks.
 .container {
   .filter-toggle {
     text-align: center;
-    margin: 20px 0;
+    margin: $margin-default;
     button {
       width: 100%;
-      max-width: 1200px;
-      padding: 15px 20px;
-      font-size: 16px;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 4px;
+      max-width: $max-width-container;
+      padding: $padding-default;
+      font-size: $font-size-default;
+      color: $text-color-light;
+      background-color: $primary-color;
+      border: $border-default;
+      border-radius: $border-radius-small;
       cursor: pointer;
       outline: none;
-      transition: background-color 0.3s ease;
+      transition: $transition-bg;
       &:hover {
-        background-color: #0056b3;
+        background-color: $primary-color-hover;
       }
     }
   }
-  
+
   .reset-button {
     width: 100%;
-    max-width: 700px;
-    padding: 15px 20px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #d9534f;
-    border: 1px solid #d43f3a;
-    border-radius: 4px;
+    max-width: $max-width-reset-button;
+    padding: $padding-default;
+    font-size: $font-size-small;
+    color: $text-color-light;
+    background-color: $danger-color;
+    border: $border-danger;
+    border-radius: $border-radius-small;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: $transition-border-shadow;
     &:hover {
-      background-color: #c9302c;
-      border-color: #ac2925;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: $danger-color-hover;
+      border-color: $danger-border-color-hover;
+      box-shadow: $box-shadow-hover;
     }
   }
+
   .filter-menu {
     display: flex;
     justify-content: center;
@@ -49,52 +53,53 @@
     }
     mat-form-field {
       width: 100%;
-      max-width: 250px;
-      margin: 10px;
+      max-width: $max-width-form-field;
+      margin: $gap-small;
     }
   }
 
   .search-container {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: $margin-default;
     mat-form-field {
       width: 100%;
-      max-width: 1200px;
+      max-width: $max-width-container;
     }
   }
 
   .loading {
     text-align: center;
     margin-top: 50px;
-    font-size: 18px;
-    color: #F5F5F5;
+    font-size: $font-size-large;
+    color: $light-color;
   }
 
   .session-cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(768px, 1fr));
-    gap: 20px;
+    gap: $gap-default;
     justify-content: center;
-    padding: 20px;
+    padding: $margin-default;
   }
 
   app-session-card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: $box-shadow-hover;
+    border-radius: $border-radius-medium;
     overflow: hidden;
     transition: transform 0.3s ease;
-    background-color: #F5F5F5;
+    background-color: $light-color;
     &:hover {
       transform: translateY(-5px);
     }
   }
 }
 
-.toggle-button{
-  margin-top: 10px;
+.toggle-button {
+  margin-top: $gap-small;
 }
-@media (max-width: 768px) {
+
+@media (max-width: $breakpoint-mobile) {
   .container {
     .search-container, .filter-toggle {
       flex-direction: column;
@@ -103,7 +108,7 @@
 
     .session-cards-container {
       grid-template-columns: 1fr;
-      padding: 10px;
+      padding: $gap-small;
     }
   }
 }
@@ -111,25 +116,24 @@
 .buttons-container {
   display: flex;
   justify-content: center;
-  gap: 10px; 
-  padding: 0 10px; 
-  max-width: 1200px; 
+  gap: $gap-small; 
+  padding: 0 $gap-small; 
+  max-width: $max-width-container; 
   margin: 0 auto; 
 }
 
 .buttons-container button {
-  padding: 15px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
+  padding: $padding-default;
+  font-size: $font-size-default;
+  color: $text-color-light;
+  background-color: $primary-color;
+  border: $border-default;
+  border-radius: $border-radius-small;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.3s ease;
+  transition: $transition-bg;
   flex: 1; 
-
   &:hover {
-    background-color: #0056b3;
+    background-color: $primary-color-hover;
   }
 }

@@ -11,7 +11,7 @@
   </div>
     <div class="ticket-quantity">
       <button (click)="decreaseTickets()" [disabled]="ticketCount <= 1">-</button>
-      <input type="text" [(ngModel)]="ticketCount" disabled />
+      <input class ="booking-counter" type="text" [(ngModel)]="ticketCount" disabled />
       <button (click)="increaseTickets()" [disabled]="ticketCount >= session.availableSeats!">+</button>
     </div>
     <button class="booking-button" (click)="bookRecommendedSeats()">Broneeri</button>
