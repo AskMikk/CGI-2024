@@ -47,6 +47,7 @@ export class SessionSeatingPageComponent implements OnInit {
       this.recommendedSeats = this.seatRecommendationService.getRecommendedSeats(this.session.sessionId);
       this.saveRecommendedSeats();
     }
+    this.ticketCount = this.recommendedSeats.length;
     this.initializeSeatMatrix();
   }
 
@@ -73,7 +74,7 @@ export class SessionSeatingPageComponent implements OnInit {
     } else {
       console.error('No seats selected');
     }
-    this.router.navigate(['/']); 
+    this.router.navigate(['/']);
   }
 
   fetchOccupiedSeats(sessionId: number): void {
@@ -118,7 +119,7 @@ export class SessionSeatingPageComponent implements OnInit {
       });
     }
   }
-  
+
   decreaseTickets(): void {
     if (this.ticketCount > 1) {
       this.ticketCount--;
@@ -132,5 +133,5 @@ export class SessionSeatingPageComponent implements OnInit {
         error: (error) => console.error('Failed to get seat recommendations', error)
       });
     }
-  }  
+  }
 }
