@@ -24,6 +24,11 @@ public class SessionService {
     public List<SessionDTO> getAllUpcomingSessions() {
         List<Session> sessions = sessionRepository.findUpcomingSessions(new Date());
         return sessions.stream()
+                .filter(session -> {
+                    int bookedSeats = bookingRepository.countBySession(session);
+                    int totalSeats = session.getTheater().getCapacity();
+                    return (totalSeats - bookedSeats) > 0;
+                })
                 .sorted(Comparator.comparing(Session::getStartTime))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

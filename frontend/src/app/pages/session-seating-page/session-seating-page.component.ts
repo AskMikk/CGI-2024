@@ -64,17 +64,17 @@ export class SessionSeatingPageComponent implements OnInit {
         row: this.recommendedSeats[0].row,
         seats: this.recommendedSeats.map(s => s.seat)
       };
-
+  
       this.bookingService.bookSeats(bookingRequest).subscribe({
         next: (response) => {
           localStorage.removeItem(`recommendedSeats-${this.session.sessionId}`);
+          this.router.navigate(['/']);
         },
-        error: (error) => console.error('Booking failed', error,bookingRequest)
+        error: (error) => console.error('Booking failed', error, bookingRequest)
       });
     } else {
       console.error('No seats selected');
     }
-    this.router.navigate(['/']);
   }
 
   fetchOccupiedSeats(sessionId: number): void {
