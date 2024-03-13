@@ -58,25 +58,41 @@ export class SessionSeatingPageComponent implements OnInit {
   bookRecommendedSeats(): void {
     if (this.recommendedSeats.length > 0) {
       const userId = localStorage.getItem('userId');
-      const bookingRequest: Booking = {
-        sessionId: this.session.sessionId,
-        userId: parseInt(userId!),
-        row: this.recommendedSeats[0].row,
-        seats: this.recommendedSeats.map(s => s.seat)
-      };
+      if (!userId) {
+        console.error('User ID not found');
+        return;
+      }
   
-      this.bookingService.bookSeats(bookingRequest).subscribe({
-        next: (response) => {
-          localStorage.removeItem(`recommendedSeats-${this.session.sessionId}`);
-          this.router.navigate(['/']);
-        },
-        error: (error) => console.error('Booking failed', error, bookingRequest)
+      const seatsByRows = this.recommendedSeats.reduce((acc, seat) => {
+        if (!acc[seat.row]) {
+          acc[seat.row] = [];
+        }
+        acc[seat.row].push(seat.seat);
+        return acc;
+      }, {} as { [key: number]: number[] });
+  
+      Object.keys(seatsByRows).forEach(rowKey => {
+        const row = parseInt(rowKey);
+        const seats = seatsByRows[row];
+        const bookingRequest: Booking = {
+          sessionId: this.session.sessionId,
+          userId: parseInt(userId),
+          row: row,
+          seats: seats
+        };
+  
+        this.bookingService.bookSeats(bookingRequest).subscribe({
+          error: (error) => console.error('Booking failed', error, bookingRequest)
+        });
       });
+  
+      localStorage.removeItem(`recommendedSeats-${this.session.sessionId}`);
+      this.router.navigate(['/']);
     } else {
       console.error('No seats selected');
     }
   }
-
+  
   fetchOccupiedSeats(sessionId: number): void {
     this.sessionService.getOccupiedSeats(sessionId).subscribe({
       next: (seats) => {
