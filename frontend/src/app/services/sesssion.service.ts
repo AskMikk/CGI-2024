@@ -10,9 +10,9 @@ import { Seat } from "../models/seat";
   })
   export class SessionService {
     private readonly apiUrl = environment.backendUrl + '/api/session';
-  
+
     constructor(private http: HttpClient) {}
-  
+
     getAllUpcomingSessions(): Observable<Session[]> {
       return this.http.get<Session[]>(`${this.apiUrl}/upcoming`);
     }

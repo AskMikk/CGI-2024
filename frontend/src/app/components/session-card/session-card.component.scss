@@ -111,3 +111,16 @@
     text-align: center;
   }
 }
+
+.delete-button {
+  margin-top: $gap-small;
+  padding: $padding-default;
+  background-color: $danger-color;
+  color: $text-color-light;
+  border: $border-default;
+  border-radius: $border-radius-medium;
+  cursor: pointer;
+  &:hover {
+    background-color: $danger-color-hover;
+  }
+}

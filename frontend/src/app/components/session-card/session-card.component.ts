@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Session } from '../../models/session';
 import { BookingService } from '../../services/booking.service';
 import { SeatRecommendationService } from '../../services/seat-recommendation-service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-session-card',
@@ -10,6 +11,7 @@ import { SeatRecommendationService } from '../../services/seat-recommendation-se
   styleUrl: './session-card.component.scss'
 })
 export class SessionCardComponent {
+  @Output() bookingDeleted: EventEmitter<void> = new EventEmitter();
   @Input() session: Session = {
     sessionId: 0,
     filmTitle: '',
@@ -27,9 +29,10 @@ export class SessionCardComponent {
   ticketCount: number = 1;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private bookingService: BookingService,
-    private seatRecommendationService: SeatRecommendationService
+    private seatRecommendationService: SeatRecommendationService,
+    private userService: UserService
   ) {}
   bookSession(): void {
     this.bookingService.recommendSeats(this.session.sessionId, this.ticketCount).subscribe({
@@ -55,6 +58,18 @@ export class SessionCardComponent {
   decreaseTickets(): void {
     if (this.ticketCount > 1) {
       this.ticketCount--;
+    }
+  }
+
+  deleteUserBooking(): void {
+    const userId = parseInt(localStorage.getItem('userId') || '0');
+    if (userId && this.session.sessionId) {
+      this.userService.deleteAllBookingsBySessionAndUser(userId, this.session.sessionId).subscribe({
+        next: () => {
+          this.bookingDeleted.emit();
+        },
+        error: (error) => console.error('Failed to delete booking', error)
+      });
     }
   }
 }

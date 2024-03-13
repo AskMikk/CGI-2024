@@ -1,9 +1,12 @@
-<div class="container"> 
-    <div class="filter-toggle">
-      <button class="toggle-button" (click)="redirectToMain()">Tagasi</button>
-    </div>
-    <div *ngIf="loading" class="loading">Laadimine...</div>
-    <div class="session-cards-container" *ngIf="!loading">
-      <app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
-    </div>
+<div class="container">
+  <div class="filter-toggle">
+    <button class="toggle-button" (click)="redirectToMain()">Tagasi</button>
   </div>
+  <div *ngIf="loading" class="loading">Laadimine...</div>
+  <div *ngIf="!loading && sessions.length > 0; else noRecommendations" class="session-cards-container">
+    <app-session-card *ngFor="let session of sessions" [session]="session"></app-session-card>
+  </div>
+  <ng-template #noRecommendations>
+    <h2>Külastuste ajalugu on tühi, soovituste tegemise võimalus puudub.</h2>
+  </ng-template>
+</div>

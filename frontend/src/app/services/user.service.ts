@@ -19,4 +19,8 @@ export class UserService {
   getRecommendedSessionsBasedOnHistory(userId: number): Observable<Session[]> {
     return this.http.get<Session[]>(`${this.apiUrl}/${userId}/recommendations`);
   }
+
+  deleteAllBookingsBySessionAndUser(userId: number, sessionId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${userId}/sessions/${sessionId}`);
+  }
 }

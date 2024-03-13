@@ -21,5 +21,8 @@
       </div>
       <button class="book-button" (click)="bookSession()">{{ 'Broneeri' }}</button>
     </ng-container>
+      <ng-container *ngIf="isHistoryPage()">
+        <button class="delete-button" (click)="deleteUserBooking()">Kustuta</button>
+      </ng-container>
   </div>
 </div>

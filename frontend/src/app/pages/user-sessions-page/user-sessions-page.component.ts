@@ -34,8 +34,27 @@ export default class UserSessionsPageComponent implements OnInit {
       console.error('User ID not found');
       this.loading = false;
     }
+    this.fetchUserSessions();
   }
+
   redirectToMain(): void {
     this.router.navigate(['/']); 
+  }
+
+  fetchUserSessions(): void {
+    this.loading = true;
+    const userId = parseInt(localStorage.getItem('userId') || '0');
+    if (userId > 0) {
+      this.userService.getSessionsByUserId(userId).subscribe({
+        next: (sessions) => {
+          this.sessions = sessions;
+          this.loading = false;
+        },
+        error: (error) => {
+          console.error('Failed to fetch sessions', error);
+          this.loading = false;
+        }
+      });
+    }
   }
 }
