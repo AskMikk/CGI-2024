@@ -23,4 +23,9 @@ public class UserController {
     public List<SessionDTO> getRecommendationsBasedOnHistory(@PathVariable Long userId) {
         return userService.recommendSessionsBasedOnHistory(userId);
     }
+
+    @DeleteMapping("/{userId}/sessions/{sessionId}")
+    public void deleteAllBookingsBySessionAndUser(@PathVariable Long userId, @PathVariable Long sessionId) {
+        userService.deleteAllBookingsBySessionAndUser(sessionId, userId);
+    }
 }

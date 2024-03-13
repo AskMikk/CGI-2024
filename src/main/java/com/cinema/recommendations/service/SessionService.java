@@ -6,6 +6,7 @@ import com.cinema.recommendations.entity.Genre;
 import com.cinema.recommendations.entity.Language;
 import com.cinema.recommendations.repository.BookingRepository;
 import com.cinema.recommendations.repository.SessionRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;

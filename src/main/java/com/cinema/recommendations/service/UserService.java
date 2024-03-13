@@ -64,4 +64,12 @@ public class UserService {
         }
         return score;
     }
+
+    public void deleteAllBookingsBySessionAndUser(Long sessionId, Long userId) {
+        List<Booking> bookings = bookingRepository.findByUserIdAndSessionId(userId, sessionId);
+        if (bookings.isEmpty()) {
+            throw new IllegalStateException("No bookings found for user id: " + userId + " and session id: " + sessionId);
+        }
+        bookingRepository.deleteAll(bookings);
+    }
 }
