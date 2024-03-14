@@ -87,4 +87,17 @@ class UserServiceTest {
         verify(bookingRepository).findByUserId(userId);
         verify(sessionRepository).findUpcomingSessions(any(Date.class));
     }
+
+    @Test
+    void deleteAllBookingsBySessionAndUser_NoBookingsFound_ThrowsException() {
+        Long userId = 2L;
+        Long sessionId = 2L;
+        when(bookingRepository.findByUserIdAndSessionId(userId, sessionId)).thenReturn(Collections.emptyList());
+
+        IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> userService.deleteAllBookingsBySessionAndUser(sessionId, userId));
+
+        assertTrue(thrown.getMessage().contains("No bookings found for user id: " + userId + " and session id: " + sessionId));
+
+        verify(bookingRepository, never()).deleteAll(any());
+    }
 }

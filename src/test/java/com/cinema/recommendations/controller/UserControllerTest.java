@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,5 +43,11 @@ public class UserControllerTest {
         mockMvc.perform(get("/api/user/{userId}/recommendations", 1))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+    @Test
+    public void deleteAllBookingsBySessionAndUserSuccess() throws Exception {
+        doNothing().when(userService).deleteAllBookingsBySessionAndUser(anyLong(), anyLong());
+        mockMvc.perform(delete("/api/user/{userId}/sessions/{sessionId}", 2L, 1L))
+                .andExpect(status().isOk());
     }
 }

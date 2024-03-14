@@ -75,16 +75,15 @@ class BookingServiceTest {
         );
         when(bookingRepository.findBySessionId(session.getId())).thenReturn(occupiedBookings);
 
-        int numberOfTickets = 6;
+        int numberOfTickets = 5;
         List<SeatDTO> recommendedSeats = bookingService.recommendSeats(session, numberOfTickets);
 
-        assertEquals(6, recommendedSeats.size());
-        assertEquals(new SeatDTO(2, 7), recommendedSeats.get(0));
-        assertEquals(new SeatDTO(2, 8), recommendedSeats.get(1));
-        assertEquals(new SeatDTO(2, 9), recommendedSeats.get(2));
-        assertEquals(new SeatDTO(2, 10), recommendedSeats.get(3));
-        assertEquals(new SeatDTO(2, 11), recommendedSeats.get(4));
-        assertEquals(new SeatDTO(2, 12), recommendedSeats.get(5));
+        assertEquals(5, recommendedSeats.size());
+        assertEquals(new SeatDTO(3, 12), recommendedSeats.get(0));
+        assertEquals(new SeatDTO(2, 12), recommendedSeats.get(1));
+        assertEquals(new SeatDTO(3, 11), recommendedSeats.get(2));
+        assertEquals(new SeatDTO(3, 13), recommendedSeats.get(3));
+        assertEquals(new SeatDTO(4, 12), recommendedSeats.get(4));
     }
 
 }
