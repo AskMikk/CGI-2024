@@ -42,3 +42,11 @@ Probleemide lahendamiseks kasutasin mitmeid lähenemisviise:
 3. Vajadusel pöördusin AI teenuste poole, et saada abi konkreetsete probleemide lahendamisel.
 
 AI teenused olid vähem kasulikud, kuna nende vastused ei pruukinud alati vastata minu ootustele või lahendada probleemi nii, nagu ma soovisin. Kuid neid oli võimalik kasutada kiirendamaks teatud protsesse, eriti kui algoritm või funktsionaalsus oli juba põhjalikult läbi mõeldud ja vajas vaid kiiret rakendamist.
+
+## Kulunud aeg
+
+Arvestades esialgse disaini skitseerimist Figma keskkonnas ja andmebaasi koostamist, kulus töö peale umbes üks töönädal.
+
+## Autoriõigud
+
+Filmid ja nende kirjeldused kopeeriti kinokavast seisuga 09.03.24. Autoriõiguste rikkumise vältimiseks muudeti filmide plakatid tehisintellekti poolt genereeritud kujundusteks.
