@@ -81,6 +81,9 @@ public class BookingService {
         int[] seatOffsets = {-1, 0, 1};
         for (int rowOffset : rowOffsets) {
             for (int seatOffset : seatOffsets) {
+                if (rowOffset != 0 && seatOffset != 0) {
+                    continue;
+                }
                 int newRow = seat.getRow() + rowOffset;
                 int newSeat = seat.getSeat() + seatOffset;
                 if (newRow > 0 && newRow <= numberOfRows && newSeat > 0 && newSeat <= seatsPerRow) {
@@ -102,7 +105,7 @@ public class BookingService {
     private double evaluatePlacement(List<SeatDTO> placement, int numberOfRows, int seatsPerRow) {
         int centerRow = (numberOfRows + 1) / 2;
         int centerSeat = (seatsPerRow + 1) / 2;
-        double widthHeightRatio = (double)seatsPerRow / numberOfRows;
+        double widthHeightRatio = (double)seatsPerRow / numberOfRows * 2.5;
 
         return placement.stream().mapToDouble(seat -> {
             double rowDistance = Math.abs(seat.getRow() - centerRow) * widthHeightRatio;
